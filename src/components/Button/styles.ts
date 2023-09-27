@@ -20,4 +20,5 @@ export const ButtonContainer = styled.TouchableHighlight<ButtonContainerProps>`
 export const ButtonText = styled.Text`
     color: ${({theme}) => theme.colors.white};
     font-family: ${({theme}) => theme.fonts.regular};
+    letter-spacing: 1px;
 `;

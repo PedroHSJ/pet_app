@@ -26,11 +26,7 @@ export const GuestRoutes = (): JSX.Element => {
                     name="Login"
                     component={Login}
                     options={{
-                        headerShown: true,
-                        headerTitle: '',
-                        headerStyle: {
-                            backgroundColor: undefined,
-                        },
+                        headerShown: false,
                     }}
                 />
             </Navigator>

@@ -5,7 +5,13 @@ import {
     useController,
     useForm,
 } from 'react-hook-form';
-import {Container, Input, RightIconButton, TextError} from './styles';
+import {
+    Container,
+    Input,
+    InputMask,
+    RightIconButton,
+    TextError,
+} from './styles';
 import {useCallback, useEffect, useRef} from 'react';
 import {TextInputProps as TextInputRNProps} from 'react-native';
 import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -46,6 +52,8 @@ export const TextInput = ({
         defaultValue: '',
     });
 
+    const inputRef = useRef<any>(null);
+
     const handleChangeValue = useCallback(
         (value: string) => {
             field.onChange(value);
@@ -62,19 +70,29 @@ export const TextInput = ({
     // }, [field]);
 
     return (
-        <Container>
-            <Input
-                value={field.value}
-                placeholder={placeholder}
-                editable={editable}
-                mask={maskFormat}
-                secureTextEntry={name === 'password'}
-                onChangeText={(text, rawText) => {
-                    handleChangeValue(
-                        maskValueFormatted ? mask(rawText, maskFormat) : text,
-                    );
-                }}
-            />
+        <Container onPress={() => inputRef.current.focus()}>
+            {maskFormat ? (
+                <InputMask
+                    placeholder={placeholder}
+                    onChangeText={(maskedText, rawText) =>
+                        handleChangeValue(
+                            maskValueFormatted ? maskedText : String(rawText),
+                        )
+                    }
+                    value={field.value}
+                    editable={editable}
+                    mask={maskFormat}
+                    ref={inputRef}
+                />
+            ) : (
+                <Input
+                    placeholder={placeholder}
+                    onChangeText={handleChangeValue}
+                    value={field.value}
+                    editable={editable}
+                    ref={inputRef}
+                />
+            )}
             {/* {rightIconName && (
                 <MCIcon
                     name={rightIconName}

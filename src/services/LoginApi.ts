@@ -4,7 +4,6 @@ import {ILogin} from '../interfaces/ILogin';
 import {IResponseToken} from '../interfaces/IResponseToken';
 
 const login = async (data: ILogin) => {
-    console.log('service', data);
     const response = await api.post<unknown, AxiosResponse<IResponseToken>>(
         '/auth',
         {

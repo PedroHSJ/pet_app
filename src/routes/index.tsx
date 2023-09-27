@@ -1,5 +1,8 @@
+import {useAuth} from '../hooks/useAuth';
+import {AuthRoutes} from './auth.routes';
 import {GuestRoutes} from './guest.routes';
 
 export const Routes = () => {
-    return <GuestRoutes />;
+    const {token} = useAuth();
+    return token ? <AuthRoutes /> : <GuestRoutes />;
 };

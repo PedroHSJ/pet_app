@@ -1,4 +1,9 @@
-import {BackgroundImage, Container} from './styles';
+import {
+    BackgroundImage,
+    Container,
+    ContainerFooter,
+    TextForgetPassword,
+} from './styles';
 import ImageBack from '../../assets/images/Login_background_img.png';
 import Logo from '../../assets/images/Logo_primary.png';
 import {Image} from './styles';
@@ -10,6 +15,7 @@ import {ILogin} from '../../interfaces/ILogin';
 import {FormLoginValidationSchema} from '../../validations/FormLoginValidation.schema';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {useAuth} from '../../hooks/useAuth';
+import {TextFooter, TextFooterLink} from '../Home/styles';
 
 export const Login = () => {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -39,9 +45,6 @@ export const Login = () => {
                 placeholder="E-mail"
                 control={control}
                 error={errors.email?.message}
-                keyboardType="email-address"
-                autoCapitalize={'none'}
-                returnKeyType="send"
             />
             <TextInput
                 name="password"
@@ -50,13 +53,10 @@ export const Login = () => {
                 error={errors.password?.message}
                 keyboardType="default"
                 autoCapitalize={'none'}
-                // rightIconName={
-                //     isPasswordVisible ? 'eye-outline' : 'eye-off-outline'
-                // }
-                // onClickRightIcon={() =>
-                //     setIsPasswordVisible(!isPasswordVisible)
-                // }
             />
+            <ContainerFooter>
+                <TextForgetPassword>Esqueceu sua senha?</TextForgetPassword>
+            </ContainerFooter>
             <Button
                 type="default"
                 onPress={() => {

@@ -13,6 +13,7 @@ interface AuthContextData {
     error: string;
     loading: boolean;
     signIn: (credentials: ILogin) => Promise<void>;
+    logout: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -29,6 +30,7 @@ function AuthProvider({children}) {
             setLoading(true);
             setError('');
             const {token} = await login(credentials);
+            console.log('token', token);
             setToken(token);
 
             if (api.defaults.headers) {
@@ -55,8 +57,16 @@ function AuthProvider({children}) {
         }
     };
 
+    const logout = async () => {
+        setUser(null);
+        setToken('');
+        await AsyncStorage.removeItem('@token');
+        await AsyncStorage.removeItem('@user');
+    };
+
     return (
-        <AuthContext.Provider value={{user, token, error, loading, signIn}}>
+        <AuthContext.Provider
+            value={{user, token, error, loading, signIn, logout}}>
             {children}
         </AuthContext.Provider>
     );

@@ -1,4 +1,11 @@
-import {Image, Subtitle, TextFooter, TextFooterLink, Title} from './styles';
+import {
+    ContainerFooter,
+    Image,
+    Subtitle,
+    TextFooter,
+    TextFooterLink,
+    Title,
+} from './styles';
 import Logo from '../../assets/images/Logo_primary.png';
 import {Button} from '../../components/Button';
 import {Container} from '../../components/Container/styles';
@@ -17,12 +24,11 @@ export const Home = ({navigation}) => {
             <Button type="default" onPress={handleClickNavigateToSignUp}>
                 Cadastre-se
             </Button>
-            <TextFooter>
-                Já tem uma conta?{' '}
-                <TextFooterLink onPress={handleClickNavigateToLogin}>
-                    Entrar
-                </TextFooterLink>
-            </TextFooter>
+            <ContainerFooter onPress={handleClickNavigateToLogin}>
+                <TextFooter>
+                    Já tem uma conta? <TextFooterLink>Entrar</TextFooterLink>
+                </TextFooter>
+            </ContainerFooter>
         </Container>
     );
 };

@@ -36,3 +36,7 @@ export const TextFooterLink = styled.Text`
     margin-top: 16px;
     margin-bottom: 16px;
 `;
+
+export const ContainerFooter = styled.TouchableOpacity`
+    padding: 16px;
+`;
