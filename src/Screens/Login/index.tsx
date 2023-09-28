@@ -53,6 +53,7 @@ export const Login = () => {
                 error={errors.password?.message}
                 keyboardType="default"
                 autoCapitalize={'none'}
+                secureTextEntry={true}
             />
             <ContainerFooter>
                 <TextForgetPassword>Esqueceu sua senha?</TextForgetPassword>
