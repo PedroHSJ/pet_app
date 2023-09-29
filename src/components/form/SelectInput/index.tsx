@@ -30,7 +30,7 @@ import moment from 'moment';
 interface ISelectInputProps {
     onPress?: () => void;
     data?: IPicker[];
-    label?: string;
+    label: string; // A label será usada como placeholder
     requiredLabel?: boolean;
     design: 'default' | 'minimal';
     loading?: boolean;
@@ -144,20 +144,30 @@ const SelectInput = ({
                     </Label>
                 )}
                 <ContentRow>
-                    {field.value == '' || field.value == undefined || (
-                        <ButtonResetValue
-                            onPress={handleReset}
-                            disabled={editable == false}>
-                            <Value numberOfLines={1}>
-                                {selectText == '' ? formatDateTime : selectText}
-                            </Value>
-                            <MCIcon
-                                name="close-circle"
-                                size={24}
-                                color={colors.black}
-                            />
-                        </ButtonResetValue>
-                    )}
+                    {field.value == '' ||
+                        field.value == undefined ||
+                        (!selectText ? (
+                            <Placeholder
+                                disabled={loading || editable == false}
+                                onPress={handleVisibleType}>
+                                <TextPlaceholder>Selecione...</TextPlaceholder>
+                            </Placeholder>
+                        ) : (
+                            <ButtonResetValue
+                                onPress={handleReset}
+                                disabled={editable == false}>
+                                <Value numberOfLines={1}>
+                                    {selectText == ''
+                                        ? formatDateTime
+                                        : selectText}
+                                </Value>
+                                <MCIcon
+                                    name="close-circle"
+                                    size={24}
+                                    color={colors.regular}
+                                />
+                            </ButtonResetValue>
+                        ))}
                     <ButtonShow
                         disabled={loading || editable == false}
                         onPress={handleVisibleType}>
@@ -176,7 +186,7 @@ const SelectInput = ({
                                         : 'clock'
                                 }
                                 size={24}
-                                color={colors.primary}
+                                color={colors.secondary}
                             />
                         )}
                     </ButtonShow>
@@ -188,29 +198,37 @@ const SelectInput = ({
             <Modal visible={showText} animationType="fade" transparent>
                 <BtnCloseModal
                     activeOpacity={1}
-                    underlayColor={colors.black}
+                    underlayColor={colors.darkTransparent}
                     onPress={() => setShowText(false)}>
-                    <ContainerModal>
-                        <Title>{label}</Title>
-                        <InputFilter
-                            placeholder="Filtrar..."
-                            onChangeText={(e: string) => setSearch(e)}
-                            value={search}
-                        />
-                        <FlatList
-                            data={search.length > 0 ? filterData : data}
-                            renderItem={({item}: any) => (
-                                <Item
-                                    onPress={() => handlePressText(item)}
-                                    value={item}
-                                />
-                            )}
-                            ListEmptyComponent={
-                                <NotFound text="Nenhuma opção encontrada." />
-                            }
-                            keyExtractor={() => String(Math.random())}
-                            showsVerticalScrollIndicator={false}
-                        />
+                    <ContainerModal
+                        activeOpacity={1}
+                        underlayColor={colors.white}
+                        onPress={e => {
+                            // Impede a propagação do evento para o pai BtnCloseModal
+                            e.stopPropagation();
+                        }}>
+                        <>
+                            <Title>{label}</Title>
+                            <InputFilter
+                                placeholder="Filtrar..."
+                                onChangeText={(e: string) => setSearch(e)}
+                                value={search}
+                            />
+                            <FlatList
+                                data={search.length > 0 ? filterData : data}
+                                renderItem={({item}: any) => (
+                                    <Item
+                                        onPress={() => handlePressText(item)}
+                                        value={item}
+                                    />
+                                )}
+                                ListEmptyComponent={
+                                    <NotFound text="Nenhuma opção encontrada." />
+                                }
+                                keyExtractor={() => String(Math.random())}
+                                showsVerticalScrollIndicator={false}
+                            />
+                        </>
                     </ContainerModal>
                 </BtnCloseModal>
             </Modal>

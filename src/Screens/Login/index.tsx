@@ -16,9 +16,9 @@ import {FormLoginValidationSchema} from '../../validations/FormLoginValidation.s
 import {yupResolver} from '@hookform/resolvers/yup';
 import {useAuth} from '../../hooks/useAuth';
 import {TextFooter, TextFooterLink} from '../Home/styles';
+import SelectInput from '../../components/form/SelectInput';
 
 export const Login = () => {
-    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const {signIn, loading} = useAuth();
     const {
         control,
@@ -54,11 +54,6 @@ export const Login = () => {
                 control={control}
                 error={errors.password?.message}
                 type="password"
-                secureTextEntry={!isPasswordVisible}
-                rightIconName={!isPasswordVisible ? 'eye-off' : 'eye'}
-                onClickRightIcon={() => {
-                    setIsPasswordVisible(!isPasswordVisible);
-                }}
             />
             <ContainerFooter>
                 <TextForgetPassword>Esqueceu sua senha?</TextForgetPassword>

@@ -5,7 +5,7 @@ export const Container = styled.TouchableOpacity`
     padding: 15px;
     margin: 0 10px 5px 10px;
     border-radius: 50px;
-    background-color: ${(props: any) => props.theme.colors.primary};
+    background-color: ${(props: any) => props.theme.colors.secondary};
 `;
 
 export const Text = styled.Text`

@@ -62,7 +62,7 @@ export const TextPlaceholder = styled.Text`
 `;
 
 export const Value = styled.Text`
-    //padding: 15px 4px 15px 0;
+    margin-right: 8px;
     font-size: ${(props: any) => props.theme.fonts.size.medium};
     color: ${(props: any) => props.theme.colors.lightBlack};
 `;
@@ -76,7 +76,7 @@ export const ButtonResetValue = styled.TouchableOpacity`
 
 export const Modal = styled.Modal``;
 
-export const ContainerModal = styled.View`
+export const ContainerModal = styled.TouchableHighlight`
     position: absolute;
     width: 92%;
     align-self: center;

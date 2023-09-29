@@ -28,6 +28,7 @@ interface InputProps extends TextInputRNProps {
     control?: Control<FieldValue<FieldValues>>;
     placeholder: string;
     error?: string;
+    type?: string;
     maskValueFormatted?: boolean;
     maskFormat?: string;
     editable?: boolean;
@@ -44,11 +45,14 @@ export const TextInput = ({
     maskValueFormatted,
     maskFormat,
     editable,
+    type,
     rightIconName,
     onClickRightIcon,
     loading,
     ...rest
 }: InputProps) => {
+    const {colors} = useTheme();
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const form = useForm();
     const {
         field,
@@ -80,7 +84,10 @@ export const TextInput = ({
 
     return (
         <>
-            <Container onPress={() => inputRef.current?.focus()}>
+            <Container
+                activeOpacity={1}
+                underlayColor={colors.gray}
+                onPress={() => inputRef.current?.focus()}>
                 {maskFormat ? (
                     <>
                         <InputMask
@@ -106,15 +113,24 @@ export const TextInput = ({
                             placeholder={placeholder}
                             onChangeText={handleChangeValue}
                             value={field.value}
+                            secureTextEntry={
+                                type == 'password' && !isPasswordVisible
+                                    ? true
+                                    : false
+                            }
                             editable={editable}
                             ref={inputRef}
                             {...rest}
                         />
-                        <MCIcon
-                            name={rightIconName}
-                            size={24}
-                            onPress={onClickRightIcon}
-                        />
+                        {type == 'password' && (
+                            <MCIcon
+                                name={!isPasswordVisible ? 'eye-off' : 'eye'}
+                                size={24}
+                                onPress={() =>
+                                    setIsPasswordVisible(!isPasswordVisible)
+                                }
+                            />
+                        )}
                     </>
                 )}
             </Container>

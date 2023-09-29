@@ -7,6 +7,8 @@ export default {
         white: '#FFFFFF',
         black: '#000000',
         lightBlack: '#666',
+        regular: '#999',
+        placeholder: '#B9B9B9',
         background: '#A8DBD9',
         transparent: 'transparent',
         darkTransparent: 'rgba(0, 0, 0, 0.6)',
