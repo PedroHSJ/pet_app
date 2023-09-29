@@ -10,6 +10,7 @@ import {IClient} from '../../../interfaces/IClient';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {Step1ValidationSchema} from '../../../validations/SignUpStep1Validation.schema';
 import {Alert} from 'react-native';
+import SelectInput from '../../../components/form/SelectInput';
 export const Step1 = () => {
     const navigation = useNavigation();
     const {
@@ -81,6 +82,7 @@ export const Step1 = () => {
                     maskValueFormatted
                     maskFormat="(99) 99999-9999"
                 />
+
                 <Button
                     type="default"
                     onPress={() => {

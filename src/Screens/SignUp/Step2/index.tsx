@@ -9,6 +9,9 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import {IClient} from '../../../interfaces/IClient';
 import {useEffect, useState} from 'react';
 import {useCep} from '../../../hooks/useCep';
+import SelectInput from '../../../components/form/SelectInput';
+import {UFs} from '../../../constants/uf';
+import {IAddress} from '../../../interfaces/IAddress';
 export const Step2 = () => {
     const navigation = useNavigation();
     const route = useRoute();
@@ -18,7 +21,7 @@ export const Step2 = () => {
         formState: {errors},
         setValue,
         watch,
-    } = useForm();
+    } = useForm<IAddress>();
     const {get, response, success, loading: loadingCEP, error} = useCep();
 
     const cepInput = watch('address.postalCode');
@@ -29,9 +32,9 @@ export const Step2 = () => {
 
     useEffect(() => {
         if (!cepInput) return;
-        if (cepInput.replace(/\D/g, '').length < 8) return;
+        if (cepInput.length < 8) return;
 
-        get(cepInput.replace(/\D/g, ''));
+        get(cepInput.toString());
     }, [cepInput]);
 
     useEffect(() => {
@@ -39,6 +42,7 @@ export const Step2 = () => {
         setValue('address.city', response.city);
         setValue('address.neighborhood', response.neighborhood);
         setValue('address.street', response.street);
+        setValue('address.state', response.state);
     }, [response]);
 
     const handleClick = () => {
@@ -53,6 +57,26 @@ export const Step2 = () => {
                     Insira seus dados de endereço para criar uma conta e
                     aproveitar nossos serviços.
                 </Title>
+                <TextInput
+                    name="address.postalCode"
+                    placeholder="CEP"
+                    control={control}
+                    error={errors.address?.postalCode?.message}
+                    maskValueFormatted
+                    maskFormat="99999-999"
+                    keyboardType="numeric"
+                    loading={loadingCEP}
+                />
+                <SelectInput
+                    design="default"
+                    control={control}
+                    name="address.state"
+                    label="Estado"
+                    type="text"
+                    data={UFs}
+                    error={errors.address?.state?.message}
+                    loading={false}
+                />
                 <TextInput
                     name="address.city"
                     placeholder="Cidade"
@@ -78,22 +102,6 @@ export const Step2 = () => {
                     error={errors.address?.number?.message}
                 />
 
-                <TextInput
-                    name="address.postalCode"
-                    placeholder="CEP"
-                    control={control}
-                    error={errors.address?.postalCode?.message}
-                    maskValueFormatted
-                    maskFormat="99999-999"
-                    keyboardType="numeric"
-                    loading={loadingCEP}
-                />
-                <TextInput
-                    name="address.state"
-                    placeholder="Estado"
-                    control={control}
-                    error={errors.address?.state?.message}
-                />
                 <TextInput
                     name="address.complement"
                     placeholder="Complemento"

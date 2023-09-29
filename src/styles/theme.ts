@@ -6,7 +6,10 @@ export default {
         gray: '#D4D4D4',
         white: '#FFFFFF',
         black: '#000000',
+        lightBlack: '#666',
         background: '#A8DBD9',
+        transparent: 'transparent',
+        darkTransparent: 'rgba(0, 0, 0, 0.6)',
     },
     fonts: {
         regular: 'FredokaOne Regular',
