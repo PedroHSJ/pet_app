@@ -7,6 +7,7 @@ import {
 } from 'react-hook-form';
 import {
     Container,
+    ContainerFooter,
     Input,
     InputMask,
     RightIconButton,

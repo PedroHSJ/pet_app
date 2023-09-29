@@ -9,18 +9,28 @@ import {useNavigation} from '@react-navigation/native';
 import {IClient} from '../../../interfaces/IClient';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {Step1ValidationSchema} from '../../../validations/SignUpStep1Validation.schema';
+import {Alert} from 'react-native';
 export const Step1 = () => {
     const navigation = useNavigation();
     const {
         control,
         formState: {errors},
         handleSubmit,
-    } = useForm<IClient>({
-        yupResolver: yupResolver(Step1ValidationSchema),
+    } = useForm<Partial<IClient>>({
+        resolver: yupResolver(Step1ValidationSchema),
     });
+
+    const verifyPassword = (
+        pass: string | undefined,
+        confirmPass: string | undefined,
+    ) => {
+        return pass === confirmPass;
+    };
 
     const onSubmit = (data: Partial<IClient>) => {
         console.log(data);
+        if (!verifyPassword(data.password, data.confirmPassword))
+            Alert.alert('Erro', 'As senhas não coincidem');
         navigation.navigate('Step2', data);
     };
     return (

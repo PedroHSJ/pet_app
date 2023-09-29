@@ -5,15 +5,26 @@ import ImageBack from '../../../assets/images/Login_background_img.png';
 import Logo from '../../../assets/images/Logo_primary.png';
 import {TextInput} from '../../../components/form/Input';
 import {Button} from '../../../components/Button';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
+import {IClient} from '../../../interfaces/IClient';
+import {useEffect, useState} from 'react';
 export const Step2 = () => {
     const navigation = useNavigation();
+    const route = useRoute();
+    const [clientStep1, setClientStep1] = useState<Partial<IClient>>({});
     const {
         control,
         formState: {errors},
     } = useForm();
+
+    useEffect(() => {
+        console.log('route: ', route.params);
+        if (!route.params) return;
+        setClientStep1(route.params);
+    }, [route]);
+
     const handleClick = () => {
-        navigation.navigate('');
+        //navigation.navigate('');
     };
     return (
         <Container>
