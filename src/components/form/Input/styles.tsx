@@ -12,6 +12,7 @@ export const Container = styled.TouchableOpacity`
     border-radius: 10px;
     padding: 0 10px;
     margin: 8px 0;
+    justify-content: space-between;
 `;
 
 export const InputMask = styled(MaskedTextInput)``;

@@ -12,8 +12,11 @@ import {
     RightIconButton,
     TextError,
 } from './styles';
-import {useCallback, useEffect, useRef} from 'react';
-import {TextInputProps as TextInputRNProps} from 'react-native';
+import {useCallback, useEffect, useRef, useState} from 'react';
+import {
+    TextInputProps as TextInputRNProps,
+    TextInput as TextInputRN,
+} from 'react-native';
 import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useTheme} from 'styled-components/native';
 import {mask} from 'react-native-mask-text';
@@ -23,7 +26,7 @@ interface InputProps extends TextInputRNProps {
     control?: Control<FieldValue<FieldValues>>;
     placeholder: string;
     error?: string;
-
+    type: string;
     maskValueFormatted?: boolean;
     maskFormat?: string;
     editable?: boolean;
@@ -39,8 +42,10 @@ export const TextInput = ({
     maskValueFormatted,
     maskFormat,
     editable,
+    type,
     rightIconName,
     onClickRightIcon,
+    ...rest
 }: InputProps) => {
     const form = useForm();
     const {
@@ -52,7 +57,7 @@ export const TextInput = ({
         defaultValue: '',
     });
 
-    const inputRef = useRef<any>(null);
+    const inputRef = useRef<TextInputRN>(null);
 
     const handleChangeValue = useCallback(
         (value: string) => {
@@ -69,8 +74,10 @@ export const TextInput = ({
     //     );
     // }, [field]);
 
+    useEffect;
+
     return (
-        <Container onPress={() => inputRef.current.focus()}>
+        <Container onPress={() => inputRef.current?.focus()}>
             {maskFormat ? (
                 <InputMask
                     placeholder={placeholder}
@@ -83,24 +90,25 @@ export const TextInput = ({
                     editable={editable}
                     mask={maskFormat}
                     ref={inputRef}
+                    {...rest}
                 />
             ) : (
-                <Input
-                    placeholder={placeholder}
-                    onChangeText={handleChangeValue}
-                    value={field.value}
-                    editable={editable}
-                    ref={inputRef}
-                />
+                <>
+                    <Input
+                        placeholder={placeholder}
+                        onChangeText={handleChangeValue}
+                        value={field.value}
+                        editable={editable}
+                        ref={inputRef}
+                        {...rest}
+                    />
+                    <MCIcon
+                        name={rightIconName}
+                        size={24}
+                        onPress={onClickRightIcon}
+                    />
+                </>
             )}
-            {/* {rightIconName && (
-                <MCIcon
-                    name={rightIconName}
-                    size={24}
-                    color={theme.colors.black}
-                    onPress={onClickRightIcon}
-                />
-            )} */}
 
             {error && <TextError>{error}</TextError>}
         </Container>

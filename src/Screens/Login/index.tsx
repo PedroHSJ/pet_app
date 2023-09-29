@@ -51,9 +51,12 @@ export const Login = () => {
                 placeholder="Senha"
                 control={control}
                 error={errors.password?.message}
-                keyboardType="default"
-                autoCapitalize={'none'}
-                secureTextEntry={true}
+                type="password"
+                secureTextEntry={!isPasswordVisible}
+                rightIconName={!isPasswordVisible ? 'eye-off' : 'eye'}
+                onClickRightIcon={() => {
+                    setIsPasswordVisible(!isPasswordVisible);
+                }}
             />
             <ContainerFooter>
                 <TextForgetPassword>Esqueceu sua senha?</TextForgetPassword>

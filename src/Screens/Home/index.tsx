@@ -15,7 +15,9 @@ export const Home = ({navigation}) => {
     const handleClickNavigateToLogin = () => {
         navigation.navigate('Login');
     };
-    const handleClickNavigateToSignUp = () => {};
+    const handleClickNavigateToSignUp = () => {
+        navigation.navigate('Step1');
+    };
     return (
         <Container>
             <Image source={Logo} alt="Logo da empresa" />
