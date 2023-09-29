@@ -7,15 +7,19 @@ import {TextInput} from '../../../components/form/Input';
 import {Button} from '../../../components/Button';
 import {useNavigation} from '@react-navigation/native';
 import {IClient} from '../../../interfaces/IClient';
+import {yupResolver} from '@hookform/resolvers/yup';
+import {Step1ValidationSchema} from '../../../validations/SignUpStep1Validation.schema';
 export const Step1 = () => {
     const navigation = useNavigation();
     const {
         control,
         formState: {errors},
         handleSubmit,
-    } = useForm<IClient>();
+    } = useForm<IClient>({
+        yupResolver: yupResolver(Step1ValidationSchema),
+    });
 
-    const onSubmit = (data: IClient) => {
+    const onSubmit = (data: Partial<IClient>) => {
         console.log(data);
         navigation.navigate('Step2', data);
     };

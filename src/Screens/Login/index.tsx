@@ -25,7 +25,9 @@ export const Login = () => {
         formState: {errors},
         handleSubmit,
         setValue,
-    } = useForm<ILogin>({});
+    } = useForm<ILogin>({
+        resolver: yupResolver(FormLoginValidationSchema),
+    });
 
     useEffect(() => {
         setValue('email', 'pedro@gmail.com');
