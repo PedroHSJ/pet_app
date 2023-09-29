@@ -17,6 +17,7 @@ import {useCallback, useEffect, useRef, useState} from 'react';
 import {
     TextInputProps as TextInputRNProps,
     TextInput as TextInputRN,
+    ActivityIndicator,
 } from 'react-native';
 import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useTheme} from 'styled-components/native';
@@ -32,6 +33,7 @@ interface InputProps extends TextInputRNProps {
     editable?: boolean;
     rightIconName?: string;
     onClickRightIcon?: () => void;
+    loading?: boolean;
 }
 
 export const TextInput = ({
@@ -44,6 +46,7 @@ export const TextInput = ({
     editable,
     rightIconName,
     onClickRightIcon,
+    loading,
     ...rest
 }: InputProps) => {
     const form = useForm();
@@ -79,21 +82,24 @@ export const TextInput = ({
         <>
             <Container onPress={() => inputRef.current?.focus()}>
                 {maskFormat ? (
-                    <InputMask
-                        placeholder={placeholder}
-                        onChangeText={(maskedText, rawText) =>
-                            handleChangeValue(
-                                maskValueFormatted
-                                    ? maskedText
-                                    : String(rawText),
-                            )
-                        }
-                        value={field.value}
-                        editable={editable}
-                        mask={maskFormat}
-                        ref={inputRef}
-                        {...rest}
-                    />
+                    <>
+                        <InputMask
+                            placeholder={placeholder}
+                            onChangeText={(maskedText, rawText) =>
+                                handleChangeValue(
+                                    maskValueFormatted
+                                        ? maskedText
+                                        : String(rawText),
+                                )
+                            }
+                            value={field.value}
+                            editable={editable}
+                            mask={maskFormat}
+                            ref={inputRef}
+                            {...rest}
+                        />
+                        {loading && <ActivityIndicator color="#000" />}
+                    </>
                 ) : (
                     <>
                         <Input

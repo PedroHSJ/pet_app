@@ -8,6 +8,7 @@ import {Button} from '../../../components/Button';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {IClient} from '../../../interfaces/IClient';
 import {useEffect, useState} from 'react';
+import {useCep} from '../../../hooks/useCep';
 export const Step2 = () => {
     const navigation = useNavigation();
     const route = useRoute();
@@ -15,13 +16,30 @@ export const Step2 = () => {
     const {
         control,
         formState: {errors},
+        setValue,
+        watch,
     } = useForm();
+    const {get, response, success, loading: loadingCEP, error} = useCep();
+
+    const cepInput = watch('address.postalCode');
 
     useEffect(() => {
-        console.log('route: ', route.params);
-        if (!route.params) return;
-        setClientStep1(route.params);
-    }, [route]);
+        setClientStep1(route.params as IClient);
+    }, [route.params]);
+
+    useEffect(() => {
+        if (!cepInput) return;
+        if (cepInput.replace(/\D/g, '').length < 8) return;
+
+        get(cepInput.replace(/\D/g, ''));
+    }, [cepInput]);
+
+    useEffect(() => {
+        if (!response) return;
+        setValue('address.city', response.city);
+        setValue('address.neighborhood', response.neighborhood);
+        setValue('address.street', response.street);
+    }, [response]);
 
     const handleClick = () => {
         //navigation.navigate('');
@@ -65,6 +83,10 @@ export const Step2 = () => {
                     placeholder="CEP"
                     control={control}
                     error={errors.address?.postalCode?.message}
+                    maskValueFormatted
+                    maskFormat="99999-999"
+                    keyboardType="numeric"
+                    loading={loadingCEP}
                 />
                 <TextInput
                     name="address.state"
