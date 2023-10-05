@@ -17,7 +17,9 @@ export const Container = styled.TouchableHighlight`
 
 export const InputMask = styled(MaskedTextInput)``;
 
-export const Input = styled.TextInput``;
+export const Input = styled.TextInput`
+    color: ${({theme}) => theme.colors.black};
+`;
 
 export const TextError = styled.Text`
     color: ${({theme}) => theme.colors.error};

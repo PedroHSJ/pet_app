@@ -12,7 +12,7 @@ const login = async (data: ILogin) => {
             scope: 'CLIENT',
         },
     );
-    return response.data;
+    return response?.data;
 };
 
 export {login};

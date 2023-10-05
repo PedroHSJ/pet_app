@@ -9,9 +9,7 @@ export const getClientById = async (
     return reponse.data;
 };
 
-export const createClient = async (
-    client: IClient,
-): Promise<IResponse<IClient>> => {
-    const reponse = await api.post<IResponse<IClient>>('/client', client);
+export const createClient = async (client: IClient): Promise<{id: string}> => {
+    const reponse = await api.post<{id: string}>('/client', client);
     return reponse.data;
 };

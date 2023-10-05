@@ -11,6 +11,7 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import {Step1ValidationSchema} from '../../../validations/SignUpStep1Validation.schema';
 import {Alert} from 'react-native';
 import SelectInput from '../../../components/form/SelectInput';
+import {LogoImage} from '../../../components/LogoImage';
 export const Step1 = () => {
     const navigation = useNavigation();
     const {
@@ -29,16 +30,17 @@ export const Step1 = () => {
     };
 
     const onSubmit = (data: Partial<IClient>) => {
-        console.log(data);
-        if (!verifyPassword(data.password, data.confirmPassword))
+        if (!verifyPassword(data.password, data.confirmPassword)) {
             Alert.alert('Erro', 'As senhas não coincidem');
+            return;
+        }
         navigation.navigate('Step2', data);
     };
     return (
         <Container>
             <BackgroundImage source={ImageBack} />
             <Content>
-                <Image source={Logo} />
+                <LogoImage />
                 <Title>
                     Insira seus dados para criar uma conta e aproveitar nossos
                     serviços.
@@ -54,6 +56,7 @@ export const Step1 = () => {
                     placeholder="E-mail"
                     control={control}
                     error={errors.email?.message}
+                    keyboardType="email-address"
                 />
                 <TextInput
                     name="password"

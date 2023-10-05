@@ -17,6 +17,7 @@ import {useForm} from 'react-hook-form';
 import {Button} from './components/Button';
 import {Routes} from './routes';
 import {Root} from './style';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 type SectionProps = PropsWithChildren<{
     title: string;
@@ -26,11 +27,13 @@ function App(): JSX.Element {
     const {control} = useForm();
 
     return (
-        <AuthProvider>
-            <ThemeProvider theme={theme}>
-                <Routes />
-            </ThemeProvider>
-        </AuthProvider>
+        <GestureHandlerRootView style={{flex: 1}}>
+            <AuthProvider>
+                <ThemeProvider theme={theme}>
+                    <Routes />
+                </ThemeProvider>
+            </AuthProvider>
+        </GestureHandlerRootView>
     );
 }
 

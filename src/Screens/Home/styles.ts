@@ -6,8 +6,8 @@ export const Image = styled.Image`
 
 export const Title = styled.Text`
     color: ${({theme}) => theme.colors.white};
-    font-size: ${({theme}) => theme.fonts.size.xxxlarge};
-    font-family: ${({theme}) => theme.fonts.regular};
+    font-size: ${({theme}) => theme.fonts.size.xlarge};
+    font-family: ${({theme}) => theme.fonts.bold};
 `;
 
 export const Subtitle = styled.Text`
@@ -39,4 +39,38 @@ export const TextFooterLink = styled.Text`
 
 export const ContainerFooter = styled.TouchableOpacity`
     padding: 16px;
+`;
+
+export const Content = styled.View`
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+`;
+
+export const CarouselImage = styled.Image`
+    height: 100%;
+    width: 100%;
+`;
+
+export const CarouselWrapper = styled.View`
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+`;
+
+export const InfoWrapper = styled.View`
+    /* //ESCOLHENDO COR E OPACIDADE */
+    background-color: ${({theme}) => theme.colors.grayOpacity};
+
+    height: 65%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* bordas superiores foramndo um circulo */
+    border-radius: 100px 100px 0 0;
 `;

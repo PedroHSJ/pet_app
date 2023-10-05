@@ -1,5 +1,5 @@
 import {ReactNode} from 'react';
-import {ButtonContainer, ButtonText} from './styles';
+import {ButtonContainer, ButtonContainerDisabled, ButtonText} from './styles';
 import {ActivityIndicator, Text} from 'react-native';
 
 interface ButtonProps {
@@ -20,17 +20,35 @@ export const Button = ({
     rounded,
 }: ButtonProps) => {
     return (
-        <ButtonContainer
-            onPress={onPress}
-            rounded={rounded ? rounded : undefined}
-            type={type}>
-            {loading ? (
-                <>
-                    <ActivityIndicator color="#fff" />
-                </>
-            ) : (
-                <ButtonText>{children}</ButtonText>
+        <>
+            {disabled && (
+                <ButtonContainerDisabled
+                    onPress={onPress}
+                    rounded={rounded ? rounded : undefined}
+                    type={type}>
+                    {loading ? (
+                        <>
+                            <ActivityIndicator color="#fff" />
+                        </>
+                    ) : (
+                        <ButtonText>{children}</ButtonText>
+                    )}
+                </ButtonContainerDisabled>
             )}
-        </ButtonContainer>
+            {!disabled && (
+                <ButtonContainer
+                    onPress={onPress}
+                    rounded={rounded ? rounded : undefined}
+                    type={type}>
+                    {loading ? (
+                        <>
+                            <ActivityIndicator color="#fff" />
+                        </>
+                    ) : (
+                        <ButtonText>{children}</ButtonText>
+                    )}
+                </ButtonContainer>
+            )}
+        </>
     );
 };

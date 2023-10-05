@@ -6,12 +6,14 @@ import theme from '../styles/theme';
 import {Step1} from '../Screens/SignUp/Step1';
 import {IClient} from '../interfaces/IClient';
 import {Step2} from '../Screens/SignUp/Step2';
+import {VerifyEmail} from '../Screens/SignUp/VerifyEmail';
 
 export type GuestStackParamList = {
     Home: undefined;
     Login: undefined;
     Step1: undefined;
     Step2: Partial<IClient>;
+    verifyEmail: Partial<IClient>;
 };
 
 const {Navigator, Screen} = createNativeStackNavigator<GuestStackParamList>();
@@ -45,6 +47,13 @@ export const GuestRoutes = (): JSX.Element => {
                 <Screen
                     name="Step2"
                     component={Step2}
+                    options={{
+                        headerShown: false,
+                    }}
+                />
+                <Screen
+                    name="verifyEmail"
+                    component={VerifyEmail}
                     options={{
                         headerShown: false,
                     }}

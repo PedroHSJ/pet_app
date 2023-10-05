@@ -5,6 +5,7 @@ export const Container = styled.View`
     background-color: transparent;
     align-items: center;
     justify-content: center;
+    padding: 0 16px;
 `;
 
 export const BackgroundImage = styled.Image`

@@ -17,9 +17,10 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import {useAuth} from '../../hooks/useAuth';
 import {TextFooter, TextFooterLink} from '../Home/styles';
 import SelectInput from '../../components/form/SelectInput';
+import {Alert} from 'react-native';
 
 export const Login = () => {
-    const {signIn, loading} = useAuth();
+    const {signIn, loading, error} = useAuth();
     const {
         control,
         formState: {errors},
@@ -30,9 +31,15 @@ export const Login = () => {
     });
 
     useEffect(() => {
-        setValue('email', 'pedro@gmail.com');
+        setValue('email', 'joao@gmail.com');
         setValue('password', '123456');
     }, []);
+
+    useEffect(() => {
+        if (!error) return;
+
+        Alert.alert('Erro', error);
+    }, [error]);
 
     const onSubmit = async (data: ILogin) => {
         await signIn(data);

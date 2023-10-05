@@ -9,14 +9,8 @@ export const Container = styled.View`
     height: 100%;
 `;
 
-export const Content = styled.View`
-    background-color: transparent;
-    width: 70%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+export const Content = styled.ScrollView`
+    padding: 0 16px;
 `;
 
 export const Title = styled.Text`

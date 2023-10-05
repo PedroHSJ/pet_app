@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, {AxiosError} from 'axios';
 import {Alert} from 'react-native';
 import {BASE_API_URL} from '../config/config';
 
@@ -15,6 +15,7 @@ api.interceptors.response.use(
         if (error.response.status === 500) {
             Alert.alert('Erro', 'Erro no servidor');
         }
+        throw error;
     },
 );
 

@@ -1,4 +1,4 @@
-import {createContext, useContext, useState} from 'react';
+import {createContext, useContext, useEffect, useState} from 'react';
 import {ILogin} from '../interfaces/ILogin';
 import {IClient} from '../interfaces/IClient';
 import {login} from '../services/LoginApi';
@@ -6,6 +6,7 @@ import {api} from '../services';
 import {getClientById} from '../services/ClientApi';
 import jwt from 'jwt-decode';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {handleErrorMessage} from '../utils';
 
 interface AuthContextData {
     user: IClient | null;
@@ -30,7 +31,7 @@ function AuthProvider({children}) {
             setLoading(true);
             setError('');
             const {token} = await login(credentials);
-            console.log('token', token);
+
             setToken(token);
 
             if (api.defaults.headers) {
@@ -50,7 +51,7 @@ function AuthProvider({children}) {
 
             setUser(user);
         } catch (error) {
-            setError('');
+            setError(handleErrorMessage(error));
             setSuccess(false);
         } finally {
             setLoading(false);
