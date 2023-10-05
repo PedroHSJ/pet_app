@@ -74,5 +74,5 @@ export const InfoWrapper = styled.View`
     justify-content: center;
     align-items: center;
     /* bordas superiores foramndo um circulo */
-    border-radius: 100px 100px 0 0;
+    border-radius: 35px 35px 0 0;
 `;
