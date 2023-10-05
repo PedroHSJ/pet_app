@@ -19,7 +19,7 @@ import {TextFooter, TextFooterLink} from '../Home/styles';
 import SelectInput from '../../components/form/SelectInput';
 import {Alert} from 'react-native';
 
-export const Login = () => {
+export const Login = ({navigation}) => {
     const {signIn, loading, error} = useAuth();
     const {
         control,
@@ -45,6 +45,10 @@ export const Login = () => {
         await signIn(data);
     };
 
+    const handleClickForgetPassword = () => {
+        navigation.navigate('ForgetPasswordStep1');
+    };
+
     return (
         <Container>
             <BackgroundImage source={ImageBack} />
@@ -62,7 +66,7 @@ export const Login = () => {
                 error={errors.password?.message}
                 type="password"
             />
-            <ContainerFooter>
+            <ContainerFooter onPress={handleClickForgetPassword}>
                 <TextForgetPassword>Esqueceu sua senha?</TextForgetPassword>
             </ContainerFooter>
             <Button

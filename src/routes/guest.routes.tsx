@@ -7,6 +7,7 @@ import {Step1} from '../Screens/SignUp/Step1';
 import {IClient} from '../interfaces/IClient';
 import {Step2} from '../Screens/SignUp/Step2';
 import {VerifyEmail} from '../Screens/SignUp/VerifyEmail';
+import {ForgetPasswordStep1} from '../Screens/ForgetPassword/Step1';
 
 export type GuestStackParamList = {
     Home: undefined;
@@ -14,6 +15,7 @@ export type GuestStackParamList = {
     Step1: undefined;
     Step2: Partial<IClient>;
     verifyEmail: Partial<IClient>;
+    ForgetPasswordStep1: undefined;
 };
 
 const {Navigator, Screen} = createNativeStackNavigator<GuestStackParamList>();
@@ -54,6 +56,13 @@ export const GuestRoutes = (): JSX.Element => {
                 <Screen
                     name="verifyEmail"
                     component={VerifyEmail}
+                    options={{
+                        headerShown: false,
+                    }}
+                />
+                <Screen
+                    name="ForgetPasswordStep1"
+                    component={ForgetPasswordStep1}
                     options={{
                         headerShown: false,
                     }}
