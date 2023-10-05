@@ -7,13 +7,13 @@ export const Image = styled.Image`
 `;
 
 export const Title = styled.Text`
-    color: ${({theme}) => theme.colors.white};
+    color: ${({theme}) => theme.colors.black};
     font-size: ${({theme}) => theme.fonts.size.xlarge};
     font-family: ${({theme}) => theme.fonts.bold};
 `;
 
 export const Subtitle = styled.Text`
-    color: ${({theme}) => theme.colors.white};
+    color: ${({theme}) => theme.colors.black};
     font-size: ${({theme}) => theme.fonts.size.medium};
     font-family: ${({theme}) => theme.fonts.regular};
     text-align: center;
