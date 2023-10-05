@@ -1,7 +1,9 @@
 import styled from 'styled-components/native';
 
 export const Image = styled.Image`
-    height: 248px;
+    height: 45%;
+    margin-bottom: -30px;
+    object-fit: contain;
 `;
 
 export const Title = styled.Text`
@@ -65,7 +67,7 @@ export const InfoWrapper = styled.View`
     /* //ESCOLHENDO COR E OPACIDADE */
     background-color: ${({theme}) => theme.colors.grayOpacity};
 
-    height: 65%;
+    height: 45%;
     width: 100%;
     position: absolute;
     display: flex;
