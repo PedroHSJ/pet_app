@@ -18,6 +18,7 @@ import {useAuth} from '../../hooks/useAuth';
 import {TextFooter, TextFooterLink} from '../Home/styles';
 import SelectInput from '../../components/form/SelectInput';
 import {Alert} from 'react-native';
+import {VerificationCodeInput} from '../../components/form/VerificationCodeInput';
 
 export const Login = ({navigation}) => {
     const {signIn, loading, error} = useAuth();
@@ -53,6 +54,7 @@ export const Login = ({navigation}) => {
         <Container>
             <BackgroundImage source={ImageBack} />
             <Image source={Logo} alt="Logo da empresa" />
+
             <TextInput
                 name="email"
                 placeholder="E-mail"

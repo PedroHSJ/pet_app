@@ -1,5 +1,5 @@
 import {Alert, Image} from 'react-native';
-import {Container, BackgroundImage, TextForget, TextEmail} from '../styles';
+import {Container, BackgroundImage, TextBlack, TextSecondary} from '../styles';
 import ImageBack from '../../../assets/images/Login_background_img.png';
 import Logo from '../../../assets/images/Logo_primary.png';
 import {useForm} from 'react-hook-form';
@@ -14,6 +14,7 @@ import {compare} from 'bcryptjs';
 import {useEmail} from '../../../hooks/useEmail';
 import {REQUIRED_FIELD} from '../../../constants';
 import Image2 from '../../../assets/images/PET2.png';
+import {VerificationCodeInput} from '../../../components/form/VerificationCodeInput';
 export interface IForgetPasswordStep2 {
     verificationCode: string;
 }
@@ -62,6 +63,11 @@ export const ForgetPasswordStep2 = ({navigation}) => {
     }, [watch('verificationCode')]);
 
     useEffect(() => {
+        if (!dataRoute) return;
+        handleClickSend();
+    }, [dataRoute]);
+
+    useEffect(() => {
         if (!errorEmail) return;
         Alert.alert('Erro', errorEmail);
     }, [errorEmail]);
@@ -77,7 +83,10 @@ export const ForgetPasswordStep2 = ({navigation}) => {
 
         Alert.alert('Sucesso', 'Código verificado com sucesso');
         setLoadingCompare(false);
-        navigation.navigate('ForgetPasswordStep3', {...dataRoute, code});
+        navigation.navigate('ConfirmPassword', {
+            ...dataRoute,
+            verificationCode: code,
+        });
     };
 
     const handleClickSend = () => {
@@ -90,13 +99,12 @@ export const ForgetPasswordStep2 = ({navigation}) => {
             <Image source={Logo} alt="Logo da empresa" /> */}
             <Image source={Image2} alt="Imagem ilustrativa" />
 
-            <TextForget>
+            <TextBlack>
                 Enviamos um código de verificação para o e-mail{' '}
-                <TextEmail>{dataRoute.email}</TextEmail>
-            </TextForget>
-            <TextInput
+                <TextSecondary>{dataRoute.email}</TextSecondary>
+            </TextBlack>
+            <VerificationCodeInput
                 name="verificationCode"
-                placeholder="Código de verificação"
                 control={control}
                 error={errors.verificationCode?.message}
             />

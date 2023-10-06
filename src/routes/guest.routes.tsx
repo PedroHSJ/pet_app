@@ -14,7 +14,8 @@ import {
 import {ForgetPasswordStep2} from '../Screens/ForgetPassword/Step2';
 import {Image} from 'react-native';
 import Logo from '../assets/images/Logo_primary.png';
-interface IForgetPasswordStep3 {
+import {ConfirmPassword} from '../Screens/ForgetPassword/ConfirmPassword';
+export interface IForgetPasswordStep2 {
     verificationCode: string;
     email: string;
 }
@@ -27,7 +28,7 @@ export type GuestStackParamList = {
     verifyEmail: Partial<IClient>;
     ForgetPasswordStep1: undefined;
     ForgetPasswordStep2: IForgetPasswordStep1;
-    ForgetPasswordStep3: IForgetPasswordStep3;
+    ConfirmPassword: IForgetPasswordStep2;
 };
 
 const {Navigator, Screen} = createNativeStackNavigator<GuestStackParamList>();
@@ -101,10 +102,11 @@ export const GuestRoutes = (): JSX.Element => {
                     }}
                 />
                 <Screen
-                    name="ForgetPasswordStep3"
-                    component={ForgetPasswordStep2}
+                    name="ConfirmPassword"
+                    component={ConfirmPassword}
                     options={{
-                        headerShown: false,
+                        headerTitle: 'Nova senha',
+                        headerTitleAlign: 'left',
                     }}
                 />
             </Navigator>

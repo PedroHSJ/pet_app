@@ -26,6 +26,10 @@ function AuthProvider({children}) {
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
 
+    useEffect(() => {
+        setError('');
+    }, [error]);
+
     const signIn = async (credentials: ILogin) => {
         try {
             setLoading(true);

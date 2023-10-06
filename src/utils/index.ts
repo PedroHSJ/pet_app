@@ -1,8 +1,6 @@
 import {AxiosError} from 'axios';
 
 export function handleErrorMessage(error: any) {
-    console.log('entrei na funcao', error);
-    console.log('entrei na funcao', error.response?.data?.message);
     if (!error) return '';
     if (error instanceof AxiosError)
         return error.response?.data?.message.message;

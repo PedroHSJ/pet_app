@@ -19,7 +19,10 @@ export const updatePasswordClient = async (
     email: string,
     verificationCode: string,
 ): Promise<{message: string}> => {
-    const reponse = await api.put<{message: string}>(
+    console.log('password', password);
+    console.log('email', email);
+    console.log('verificationCode', verificationCode);
+    const reponse = await api.post<{message: string}>(
         '/client/update-password',
         {
             password,
@@ -27,5 +30,6 @@ export const updatePasswordClient = async (
             verificationCode,
         },
     );
+    console.log('reponse', reponse.data);
     return reponse.data;
 };

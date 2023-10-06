@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import {IClient} from '../interfaces/IClient';
 import {createClient, updatePasswordClient} from '../services/ClientApi';
+import {handleErrorMessage} from '../utils';
 
 export const useClient = () => {
     const [client, setClient] = useState<IClient | null>(null);
@@ -16,7 +17,7 @@ export const useClient = () => {
             const {id} = await createClient(data);
             setSuccess(true);
         } catch (error) {
-            setError(error.message);
+            setError(handleErrorMessage(error));
             setSuccess(false);
         } finally {
             setLoading(false);
@@ -39,7 +40,7 @@ export const useClient = () => {
             );
             setSuccess(true);
         } catch (error) {
-            setError(error.message);
+            setError(handleErrorMessage(error));
             setSuccess(false);
         } finally {
             setLoading(false);

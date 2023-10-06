@@ -20,6 +20,7 @@ import Dog1 from '../../assets/images/dog_1.png';
 import Dog2 from '../../assets/images/dog_2.png';
 import Dog3 from '../../assets/images/dog_3.png';
 import Carousel from 'react-native-reanimated-carousel';
+import {VerificationCodeInput} from '../../components/form/VerificationCodeInput';
 export const Home = ({navigation}) => {
     const handleClickNavigateToLogin = () => {
         navigation.navigate('Login');

@@ -1,5 +1,5 @@
 import {Image} from 'react-native';
-import {Container, BackgroundImage, TextForget} from '../styles';
+import {Container, BackgroundImage, TextBlack} from '../styles';
 import ImageBack from '../../../assets/images/Login_background_img.png';
 import Logo from '../../../assets/images/Logo_primary.png';
 import {useForm} from 'react-hook-form';
@@ -37,9 +37,9 @@ export const ForgetPasswordStep1 = ({navigation}) => {
             {/* <BackgroundImage source={ImageBack} /> */}
             {/* <Image source={Logo} alt="Logo da empresa" /> */}
             <Image source={Image1} alt="Imagem de pessoa com seu pet" />
-            <TextForget>
+            <TextBlack>
                 Para recuperar sua senha, digite seu e-mail abaixo.
-            </TextForget>
+            </TextBlack>
             <TextInput
                 name="email"
                 placeholder="E-mail"

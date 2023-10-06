@@ -27,7 +27,7 @@ export const Image = styled.Image`
     opacity: 0.3;
 `;
 
-export const TextForget = styled.Text`
+export const TextSecondary = styled.Text`
     color: ${({theme}) => theme.colors.secondary};
     font-size: ${({theme}) => theme.fonts.size.medium};
     font-family: ${({theme}) => theme.fonts.bold};
@@ -36,7 +36,7 @@ export const TextForget = styled.Text`
     text-align: center;
 `;
 
-export const TextEmail = styled.Text`
+export const TextBlack = styled.Text`
     color: ${({theme}) => theme.colors.black};
     font-size: ${({theme}) => theme.fonts.size.medium};
     font-family: ${({theme}) => theme.fonts.bold};
