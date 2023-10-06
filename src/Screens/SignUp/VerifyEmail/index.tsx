@@ -21,6 +21,7 @@ import {useClient} from '../../../hooks/useClient';
 import {BackgroundImage} from '../../Login/styles';
 import ImageBack from '../../../assets/images/Login_background_img.png';
 import Logo from '../../../assets/images/Logo_primary.png';
+import {VerificationCodeInput} from '../../../components/form/VerificationCodeInput';
 
 interface IVerifyEmail {
     code: string;
@@ -123,13 +124,7 @@ export const VerifyEmail = (): JSX.Element => {
                         código de confirmação
                     </SubTitle>
 
-                    <TextInput
-                        control={control}
-                        name="code"
-                        placeholder="Código de confirmação"
-                        keyboardType="numeric"
-                        maxLength={6}
-                    />
+                    <VerificationCodeInput control={control} name="code" />
                     <ContainerResendEmail onPress={() => onClickResendEmail()}>
                         <SubTitle>Não recebeu o código? </SubTitle>
                         <SubTitle>
