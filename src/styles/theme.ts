@@ -1,11 +1,13 @@
 export default {
     colors: {
-        primary: '#5AB198',
+        // primary: '#5AB198',
+        primary: '#5CB15A',
         secondary: '#5AB198',
         error: '#E54D4D',
         red: '#FF0000',
         gray: '#D4D4D4',
         grayOpacity: '#D4D4D4DC',
+        lightGray: '#F2F2F2',
         white: '#FFFFFF',
         ice: '#E5E5E5E5',
         black: '#000000',

@@ -25,3 +25,17 @@ export const firstAndSecondName = (name: string | undefined) => {
 
     return `${firstName} ${secondName ? secondName : ''}`;
 };
+
+export const formatDate = (date: Date) => {
+    if (!date) return '';
+
+    // const month = date.getMonth() + 1;
+    // const year = date.getFullYear();
+    // return `${day}/${month}/${year}`;
+
+    return date.toLocaleString('pt-BR', {
+        day: 'numeric',
+        month: 'numeric',
+        year: 'numeric',
+    });
+};

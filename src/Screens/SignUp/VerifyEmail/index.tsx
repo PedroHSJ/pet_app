@@ -76,7 +76,6 @@ export const VerifyEmail = (): JSX.Element => {
     // };
     useEffect(() => {
         const code = watch('code');
-        console.log('code', code);
         setLoadingCompare(false);
         if (code.length === 6) {
             (async () => {
@@ -110,11 +109,6 @@ export const VerifyEmail = (): JSX.Element => {
         setLoadingCompare(false);
         await create(client);
     };
-
-    useEffect(() => {
-        if (!client) return;
-        console.log('client', client);
-    }, [client]);
 
     return (
         <>

@@ -13,3 +13,19 @@ export const createClient = async (client: IClient): Promise<{id: string}> => {
     const reponse = await api.post<{id: string}>('/client', client);
     return reponse.data;
 };
+
+export const updatePasswordClient = async (
+    password: string,
+    email: string,
+    verificationCode: string,
+): Promise<{message: string}> => {
+    const reponse = await api.put<{message: string}>(
+        '/client/update-password',
+        {
+            password,
+            email,
+            verificationCode,
+        },
+    );
+    return reponse.data;
+};

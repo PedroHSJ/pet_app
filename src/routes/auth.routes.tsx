@@ -27,6 +27,7 @@ export const AuthRoutes = (): JSX.Element => {
                     headerTintColor: colors.black,
                     headerTitleStyle: {
                         fontFamily: 'Inter-Bold',
+                        fontSize: 15,
                     },
                 }}>
                 <Screen

@@ -2,6 +2,15 @@ import styled from 'styled-components/native';
 import {MaskedTextInput} from 'react-native-mask-text';
 import {BorderlessButton} from 'react-native-gesture-handler';
 
+export const FullContainer = styled.View`
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 353px;
+`;
+
 export const Container = styled.TouchableHighlight`
     flex-direction: row;
     align-items: center;
@@ -23,6 +32,7 @@ export const Input = styled.TextInput`
 
 export const TextError = styled.Text`
     color: ${({theme}) => theme.colors.error};
+    margin: 5px 0;
 `;
 
 export const RightIconButton = styled(BorderlessButton)``;

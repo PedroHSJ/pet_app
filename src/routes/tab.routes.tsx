@@ -30,17 +30,17 @@ export const TabRoutes = (): JSX.Element => {
                     elevation: 15,
                 },
                 tabBarActiveTintColor: colors.primary,
-                tabBarInactiveTintColor: colors.black,
+                tabBarInactiveTintColor: colors.gray,
                 tabBarLabelPosition: 'below-icon',
                 tabBarLabelStyle: {
                     fontSize: 10,
-                    fontFamily: 'Inter-Bold',
+                    fontFamily: 'Inter-thin',
                     marginBottom: 10,
                 },
                 headerTintColor: colors.primary,
                 headerTitleStyle: {
                     fontFamily: 'Inter-Bold',
-                    letterSpacing: 1,
+                    fontSize: 15,
                 },
                 tabBarStyle: {
                     minHeight: 70,
@@ -56,7 +56,7 @@ export const TabRoutes = (): JSX.Element => {
                 component={Dashboard}
                 options={{
                     tabBarIcon: ({size, color}) => (
-                        <Icon name="home" size={40} color={color} />
+                        <Icon name="home" size={25} color={color} />
                     ),
                     tabBarLabel: 'Início',
                 }}
@@ -66,7 +66,7 @@ export const TabRoutes = (): JSX.Element => {
                 component={Profile}
                 options={{
                     tabBarIcon: ({size, color}) => (
-                        <Icon name="account" size={40} color={color} />
+                        <Icon name="account" size={25} color={color} />
                     ),
                     tabBarLabel: 'Perfil',
                     headerTitle: 'Perfil',

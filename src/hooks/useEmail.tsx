@@ -1,5 +1,8 @@
 import {useState} from 'react';
-import {verifyEmail} from '../services/EmailApi';
+import {
+    sendEmailApi,
+    sendVerificationCodeUpdatePasswordApi,
+} from '../services/EmailApi';
 
 export const useEmail = () => {
     const [loading, setLoading] = useState(false);
@@ -13,8 +16,22 @@ export const useEmail = () => {
             setError('');
             console.log('email', email);
             console.log('name', name);
-            const code = await verifyEmail({email, name});
+            const code = await sendEmailApi({email, name});
             console.log('code', code);
+            setVerificationCode(code);
+            setSuccess(true);
+        } catch (error) {
+            setError(error.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const sendEmailVerificationCodeUpdatePassword = async (email: string) => {
+        try {
+            setLoading(true);
+            setError('');
+            const code = await sendVerificationCodeUpdatePasswordApi({email});
             setVerificationCode(code);
             setSuccess(true);
         } catch (error) {
@@ -30,5 +47,6 @@ export const useEmail = () => {
         success,
         verificationCode,
         sendEmailVerificationCode,
+        sendEmailVerificationCodeUpdatePassword,
     };
 };

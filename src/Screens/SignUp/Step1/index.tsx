@@ -39,61 +39,60 @@ export const Step1 = () => {
     return (
         <Container>
             <BackgroundImage source={ImageBack} />
-            <Content>
-                <LogoImage />
-                <Title>
-                    Insira seus dados para criar uma conta e aproveitar nossos
-                    serviços.
-                </Title>
-                <TextInput
-                    name="name"
-                    placeholder="Nome"
-                    control={control}
-                    error={errors.name?.message}
-                />
-                <TextInput
-                    name="email"
-                    placeholder="E-mail"
-                    control={control}
-                    error={errors.email?.message}
-                    keyboardType="email-address"
-                />
-                <TextInput
-                    name="password"
-                    placeholder="Senha"
-                    control={control}
-                    error={errors.password?.message}
-                    keyboardType="default"
-                    autoCapitalize={'none'}
-                    secureTextEntry={true}
-                />
-                <TextInput
-                    name="confirmPassword"
-                    placeholder="Confirmar senha"
-                    control={control}
-                    error={errors.confirmPassword?.message}
-                    keyboardType="default"
-                    autoCapitalize={'none'}
-                    secureTextEntry={true}
-                />
-                <TextInput
-                    name="phone"
-                    placeholder="Telefone"
-                    control={control}
-                    error={errors.phone?.message}
-                    keyboardType="numeric"
-                    maskValueFormatted
-                    maskFormat="(99) 99999-9999"
-                />
 
-                <Button
-                    type="default"
-                    onPress={() => {
-                        handleSubmit(onSubmit)();
-                    }}>
-                    Continuar
-                </Button>
-            </Content>
+            <LogoImage />
+            <Title>
+                Insira seus dados para criar uma conta e aproveitar nossos
+                serviços.
+            </Title>
+            <TextInput
+                name="name"
+                placeholder="Nome"
+                control={control}
+                error={errors.name?.message}
+            />
+            <TextInput
+                name="email"
+                placeholder="E-mail"
+                control={control}
+                error={errors.email?.message}
+                keyboardType="email-address"
+            />
+            <TextInput
+                name="password"
+                placeholder="Senha"
+                control={control}
+                error={errors.password?.message}
+                keyboardType="default"
+                autoCapitalize={'none'}
+                secureTextEntry={true}
+            />
+            <TextInput
+                name="confirmPassword"
+                placeholder="Confirmar senha"
+                control={control}
+                error={errors.confirmPassword?.message}
+                keyboardType="default"
+                autoCapitalize={'none'}
+                secureTextEntry={true}
+            />
+            <TextInput
+                name="phone"
+                placeholder="Telefone"
+                control={control}
+                error={errors.phone?.message}
+                keyboardType="numeric"
+                maskValueFormatted
+                maskFormat="(99) 99999-9999"
+            />
+
+            <Button
+                type="default"
+                onPress={() => {
+                    handleSubmit(onSubmit)();
+                }}>
+                Continuar
+            </Button>
         </Container>
     );
 };

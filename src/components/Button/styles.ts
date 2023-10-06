@@ -15,7 +15,7 @@ export const ButtonContainer = styled.TouchableHighlight<ButtonContainerProps>`
         type === 'default' ? theme.colors.secondary : 'transparent'};
     justify-content: center;
     align-items: center;
-    border-radius: ${({rounded}) => (rounded ? '50px' : '5px')};
+    border-radius: ${({rounded}) => (rounded ? '50px' : '10px')};
 `;
 
 export const ButtonText = styled.Text`

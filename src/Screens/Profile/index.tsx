@@ -6,31 +6,35 @@ import {
     CardWrapper,
     Container,
     Content,
+    CreatedAtText,
     InfoWrapper,
     LogoutButton,
     LogoutButtonText,
     ProfileCardText,
     ProfileEmail,
     ProfileName,
+    ProfileNameBold,
     ProfilePhone,
     WrapperEmail,
     WrapperPhone,
-    WrapperProfile,
+    WrapperProfileColumn,
+    WrapperProfileRow,
 } from './styles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {firstAndSecondName, formatPhone} from '../../utils';
+import {firstAndSecondName, formatDate, formatPhone} from '../../utils';
 import {ProfileCard} from '../../components/cards/ProfileCard';
 import {useTheme} from 'styled-components/native';
 export const Profile = ({navigation}) => {
     const {logout, user} = useAuth();
     const {colors} = useTheme();
-    // useEffect(() => {
-    //     if (!user) return;
-    //     navigation.setOptions({
-    //         title: `${firstAndSecondName(user?.name)}`,
-    //         //CENTRALIZANDO NOME
-    //     });
-    // }, [user]);
+    useEffect(() => {
+        if (!user) return;
+        // navigation.setOptions({
+        //     title: `${firstAndSecondName(user?.name)}`,
+        //     //CENTRALIZANDO NOME
+        // });
+        //console.log(user);
+    }, [user]);
 
     const handleClickLogout = () => {
         Alert.alert('Sair', 'Deseja realmente sair?', [
@@ -53,13 +57,29 @@ export const Profile = ({navigation}) => {
         <Container>
             <Content>
                 <InfoWrapper>
-                    <WrapperProfile>
-                        <ProfileName>{user?.name}</ProfileName>
-                        <LogoutButton onPress={handleClickLogout}>
+                    <WrapperProfileRow>
+                        <Icon
+                            name="account-circle"
+                            size={50}
+                            color={colors.primary}
+                        />
+                        <WrapperProfileColumn>
+                            <ProfileName>
+                                Olá,{' '}
+                                <ProfileNameBold>{user?.name}</ProfileNameBold>
+                            </ProfileName>
+                            {/* <LogoutButton onPress={handleClickLogout}>
                             <LogoutButtonText>Sair</LogoutButtonText>
                             <Icon name="logout" size={20} color="red" />
-                        </LogoutButton>
-                    </WrapperProfile>
+                        </LogoutButton> */}
+                            {user?.createdAt && (
+                                <CreatedAtText>
+                                    Usuário desde{' '}
+                                    {formatDate(new Date(user?.createdAt))}
+                                </CreatedAtText>
+                            )}
+                        </WrapperProfileColumn>
+                    </WrapperProfileRow>
                     <WrapperEmail>
                         <Icon name="email" size={20} color={colors.primary} />
                         <ProfileEmail>{user?.email}</ProfileEmail>
@@ -71,11 +91,7 @@ export const Profile = ({navigation}) => {
                 </InfoWrapper>
                 <CardWrapper>
                     <ProfileCard first={true}>
-                        <Icon
-                            name="account-circle"
-                            size={20}
-                            color={colors.primary}
-                        />
+                        <Icon name="pencil" size={20} color={colors.primary} />
                         <ProfileCardText>Editar conta</ProfileCardText>
                     </ProfileCard>
                     <ProfileCard onPress={handleClickMyPets}>
@@ -86,9 +102,15 @@ export const Profile = ({navigation}) => {
                         />
                         <ProfileCardText>Meus pets</ProfileCardText>
                     </ProfileCard>
-                    <ProfileCard last={true}>
+                    <ProfileCard>
                         <Icon name="paw" size={20} color={colors.primary} />
                         <ProfileCardText>Adicionar um novo pet</ProfileCardText>
+                    </ProfileCard>
+                    <ProfileCard
+                        last={true}
+                        onPress={() => handleClickLogout()}>
+                        <Icon name="logout" size={20} color={colors.red} />
+                        <ProfileCardText>Sair</ProfileCardText>
                     </ProfileCard>
                 </CardWrapper>
             </Content>

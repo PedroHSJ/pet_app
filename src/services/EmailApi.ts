@@ -6,12 +6,20 @@ interface IVerifyEmail {
     name: string;
 }
 
-export const verifyEmail = async ({email, name}: IVerifyEmail) => {
-    console.log('verifyEmail');
+export const sendEmailApi = async ({email, name}: IVerifyEmail) => {
     const response = await api.post(`/email/send-verification-code`, {
         email,
         name,
     });
-    console.log('resposne', response.data);
+    return response.data;
+};
+
+export const sendVerificationCodeUpdatePasswordApi = async ({email}) => {
+    const response = await api.post(
+        `/email/update-password/send-verification-code`,
+        {
+            email,
+        },
+    );
     return response.data;
 };

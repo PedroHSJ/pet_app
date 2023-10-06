@@ -8,6 +8,7 @@ import {
 import {
     Container,
     ContainerFooter,
+    FullContainer,
     Input,
     InputMask,
     RightIconButton,
@@ -83,7 +84,7 @@ export const TextInput = ({
     useEffect;
 
     return (
-        <>
+        <FullContainer>
             <Container
                 activeOpacity={1}
                 underlayColor={colors.gray}
@@ -135,7 +136,7 @@ export const TextInput = ({
                 )}
             </Container>
             {error && <TextError>{error}</TextError>}
-        </>
+        </FullContainer>
     );
 };
 

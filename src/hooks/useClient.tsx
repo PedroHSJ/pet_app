@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {IClient} from '../interfaces/IClient';
-import {createClient} from '../services/ClientApi';
+import {createClient, updatePasswordClient} from '../services/ClientApi';
 
 export const useClient = () => {
     const [client, setClient] = useState<IClient | null>(null);
@@ -23,11 +23,35 @@ export const useClient = () => {
         }
     };
 
+    const updatePassword = async (
+        password: string,
+        email: string,
+        verificationCode: string,
+    ) => {
+        try {
+            setLoading(true);
+            setError('');
+            setSuccess(false);
+            const response = await updatePasswordClient(
+                password,
+                email,
+                verificationCode,
+            );
+            setSuccess(true);
+        } catch (error) {
+            setError(error.message);
+            setSuccess(false);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return {
         client,
         loading,
         error,
         success,
         create,
+        updatePassword,
     };
 };
