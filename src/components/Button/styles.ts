@@ -16,6 +16,7 @@ export const ButtonContainer = styled.TouchableHighlight<ButtonContainerProps>`
     justify-content: center;
     align-items: center;
     border-radius: ${({rounded}) => (rounded ? '50px' : '10px')};
+    align-self: center;
 `;
 
 export const ButtonText = styled.Text`

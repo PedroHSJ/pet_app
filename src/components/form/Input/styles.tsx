@@ -9,6 +9,7 @@ export const FullContainer = styled.View`
     justify-content: flex-start;
     width: 100%;
     max-width: 353px;
+    align-self: center;
 `;
 
 export const Container = styled.TouchableHighlight`

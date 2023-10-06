@@ -18,5 +18,6 @@ export const Title = styled.Text`
     font-family: ${({theme}) => theme.fonts.regular};
     color: ${({theme}) => theme.colors.primary};
     margin-bottom: 8px;
+    max-width: 360px;
     text-align: center;
 `;

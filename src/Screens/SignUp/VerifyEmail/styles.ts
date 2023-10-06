@@ -33,14 +33,17 @@ export const SubTitle = styled.Text`
     font-family: ${({theme}) => theme.fonts.regular};
     color: ${({theme}) => theme.colors.lightBlack};
     margin: 5px 0;
+    max-width: 360px;
     text-align: center;
 `;
 
 export const ContainerResendEmail = styled.TouchableOpacity`
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-    margin: 5px 0;
+    width: 100%;
+    max-width: 353px;
+    justify-content: flex-start;
+    margin: -5px 0 0 0;
     padding: 10px;
 `;
 
