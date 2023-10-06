@@ -47,8 +47,8 @@ export const TabRoutes = (): JSX.Element => {
                     minHeight: 70,
                     paddingVertical: 10,
                     backgroundColor: colors.white,
-                    borderTopLeftRadius: 20,
-                    borderTopRightRadius: 20,
+                    // borderTopLeftRadius: 20,
+                    // borderTopRightRadius: 20,
                     shadowColor: colors.black,
                 },
             }}>
