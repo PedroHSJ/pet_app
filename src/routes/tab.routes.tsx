@@ -7,6 +7,7 @@ import {useTheme} from 'styled-components/native';
 export type TabRoutesParamList = {
     Dashboard: undefined;
     Profile: undefined;
+    Schedule: undefined;
 };
 
 const {Navigator, Screen} = createBottomTabNavigator<TabRoutesParamList>();
@@ -59,6 +60,17 @@ export const TabRoutes = (): JSX.Element => {
                         <Icon name="home" size={25} color={color} />
                     ),
                     tabBarLabel: 'Início',
+                }}
+            />
+            <Screen
+                name="Schedule"
+                component={Profile}
+                options={{
+                    tabBarIcon: ({size, color}) => (
+                        <Icon name="calendar" size={25} color={color} />
+                    ),
+                    tabBarLabel: 'Agendar',
+                    headerTitle: 'Agendar',
                 }}
             />
             <Screen
