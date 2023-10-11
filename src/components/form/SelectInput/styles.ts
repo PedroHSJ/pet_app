@@ -3,7 +3,6 @@ import {IDesignProps} from '../../../interfaces/IDesignProps';
 
 export const ContainerSelectInput = styled.View`
     width: 100%;
-    margin: 8px 0;
     justify-content: center;
     align-items: center;
 `;
@@ -46,7 +45,7 @@ export const ButtonShow = styled.TouchableOpacity`
 
 export const Label = styled.Text`
     font-size: ${(props: any) => props.theme.fonts.size.medium};
-    color: ${(props: any) => props.theme.colors.lightBlack};
+    color: ${(props: any) => props.theme.colors.softPlaceholder};
 `;
 
 export const Placeholder = styled.TouchableOpacity`

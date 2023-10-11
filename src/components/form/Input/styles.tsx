@@ -21,8 +21,15 @@ export const Container = styled.TouchableHighlight`
     background-color: ${({theme}) => theme.colors.gray};
     border-radius: 10px;
     padding: 0 10px;
-    margin: 8px 0;
+    gap: 8px;
     justify-content: space-between;
+`;
+
+export const ContentLeft = styled.View`
+    flex-direction: row;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
 `;
 
 export const InputMask = styled(MaskedTextInput)``;

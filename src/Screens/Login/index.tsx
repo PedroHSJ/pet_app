@@ -19,6 +19,7 @@ import {TextFooter, TextFooterLink} from '../Home/styles';
 import SelectInput from '../../components/form/SelectInput';
 import {Alert} from 'react-native';
 import {VerificationCodeInput} from '../../components/form/VerificationCodeInput';
+import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export const Login = ({navigation}) => {
     const {signIn, loading, error} = useAuth();
@@ -59,15 +60,17 @@ export const Login = ({navigation}) => {
                 name="email"
                 placeholder="E-mail"
                 control={control}
-                error={errors.email?.message}
-            />
+                error={errors.email?.message}>
+                <MCIcon name={'email'} size={24} color="#999" />
+            </TextInput>
             <TextInput
                 name="password"
                 placeholder="Senha"
                 control={control}
                 error={errors.password?.message}
-                type="password"
-            />
+                type="password">
+                <MCIcon name={'lock'} size={24} color="#999" />
+            </TextInput>
             <ContainerFooter onPress={handleClickForgetPassword}>
                 <TextForgetPassword>Esqueceu sua senha?</TextForgetPassword>
             </ContainerFooter>

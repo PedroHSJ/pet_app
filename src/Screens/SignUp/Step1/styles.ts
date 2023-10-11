@@ -8,16 +8,20 @@ export const Container = styled.View`
     justify-content: center;
     height: 100%;
     padding: 0 16px;
+    margin-top: 20%;
 `;
 
-export const Content = styled.View`
-    background-color: transparent;
-    width: 70%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+export const Form = styled.View`
+    width: 100%;
     align-items: center;
     justify-content: center;
+    gap: 12px;
+`;
+
+export const Content = styled.ScrollView`
+    flex: 1;
+    width: 100%;
+    padding: 0 16px;
 `;
 
 export const Title = styled.Text`
@@ -27,4 +31,5 @@ export const Title = styled.Text`
     margin-bottom: 8px;
     max-width: 360px;
     text-align: center;
+    align-self: center;
 `;

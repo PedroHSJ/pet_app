@@ -7,14 +7,14 @@ import {
 } from 'react-hook-form';
 import {
     Container,
-    ContainerFooter,
+    ContentLeft,
     FullContainer,
     Input,
     InputMask,
     RightIconButton,
     TextError,
 } from './styles';
-import {useCallback, useEffect, useRef, useState} from 'react';
+import {ReactNode, useCallback, useEffect, useRef, useState} from 'react';
 import {
     TextInputProps as TextInputRNProps,
     TextInput as TextInputRN,
@@ -26,6 +26,7 @@ import {mask} from 'react-native-mask-text';
 
 interface InputProps extends TextInputRNProps {
     name: string;
+    children?: ReactNode;
     control?: Control<FieldValue<FieldValues>>;
     placeholder: string;
     error?: string;
@@ -50,6 +51,7 @@ export const TextInput = ({
     rightIconName,
     onClickRightIcon,
     loading,
+    children,
     ...rest
 }: InputProps) => {
     const {colors} = useTheme();
@@ -89,51 +91,54 @@ export const TextInput = ({
                 activeOpacity={1}
                 underlayColor={colors.gray}
                 onPress={() => inputRef.current?.focus()}>
-                {maskFormat ? (
-                    <>
-                        <InputMask
-                            placeholder={placeholder}
-                            onChangeText={(maskedText, rawText) =>
-                                handleChangeValue(
-                                    maskValueFormatted
-                                        ? maskedText
-                                        : String(rawText),
-                                )
-                            }
-                            value={field.value}
-                            editable={editable}
-                            mask={maskFormat}
-                            ref={inputRef}
-                            {...rest}
-                        />
-                        {loading && <ActivityIndicator color="#000" />}
-                    </>
-                ) : (
-                    <>
-                        <Input
-                            placeholder={placeholder}
-                            onChangeText={handleChangeValue}
-                            value={field.value}
-                            secureTextEntry={
-                                type == 'password' && !isPasswordVisible
-                                    ? true
-                                    : false
-                            }
-                            editable={editable}
-                            ref={inputRef}
-                            {...rest}
-                        />
-                        {type == 'password' && (
-                            <MCIcon
-                                name={!isPasswordVisible ? 'eye-off' : 'eye'}
-                                size={24}
-                                onPress={() =>
-                                    setIsPasswordVisible(!isPasswordVisible)
+                <>
+                    <ContentLeft>
+                        {children}
+                        {maskFormat ? (
+                            <InputMask
+                                placeholder={placeholder}
+                                onChangeText={(maskedText, rawText) =>
+                                    handleChangeValue(
+                                        maskValueFormatted
+                                            ? maskedText
+                                            : String(rawText),
+                                    )
                                 }
+                                placeholderTextColor={colors.softPlaceholder}
+                                value={field.value}
+                                editable={editable}
+                                mask={maskFormat}
+                                ref={inputRef}
+                                {...rest}
+                            />
+                        ) : (
+                            <Input
+                                placeholder={placeholder}
+                                onChangeText={handleChangeValue}
+                                value={field.value}
+                                secureTextEntry={
+                                    type == 'password' && !isPasswordVisible
+                                        ? true
+                                        : false
+                                }
+                                placeholderTextColor={colors.softPlaceholder}
+                                editable={editable}
+                                ref={inputRef}
+                                {...rest}
                             />
                         )}
-                    </>
-                )}
+                    </ContentLeft>
+                    {loading && <ActivityIndicator color={colors.secondary} />}
+                    {type == 'password' && (
+                        <MCIcon
+                            name={!isPasswordVisible ? 'eye-off' : 'eye'}
+                            size={24}
+                            onPress={() =>
+                                setIsPasswordVisible(!isPasswordVisible)
+                            }
+                        />
+                    )}
+                </>
             </Container>
             {error && <TextError>{error}</TextError>}
         </FullContainer>

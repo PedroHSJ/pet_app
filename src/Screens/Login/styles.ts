@@ -15,7 +15,7 @@ export const BackgroundImage = styled.Image`
     justify-content: center;
     position: absolute;
     height: 100%;
-    opacity: 0.3;
+    opacity: 0.8;
 `;
 
 export const Image = styled.Image`

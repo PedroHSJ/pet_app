@@ -7,9 +7,19 @@ export const Container = styled.View`
     align-items: center;
     justify-content: center;
     height: 100%;
+    margin-top: 20%;
+`;
+
+export const Form = styled.View`
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
 `;
 
 export const Content = styled.ScrollView`
+    flex: 1;
+    width: 100%;
     padding: 0 16px;
 `;
 
@@ -20,4 +30,5 @@ export const Title = styled.Text`
     margin-bottom: 8px;
     max-width: 360px;
     text-align: center;
+    align-self: center;
 `;

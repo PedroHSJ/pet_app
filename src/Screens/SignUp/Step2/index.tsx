@@ -1,6 +1,6 @@
 import {useForm} from 'react-hook-form';
 import {BackgroundImage} from '../../Login/styles';
-import {Container, Content, Title} from './styles';
+import {Container, Content, Title, Form} from './styles';
 import ImageBack from '../../../assets/images/Login_background_img.png';
 import Logo from '../../../assets/images/Logo_primary.png';
 import {TextInput} from '../../../components/form/Input';
@@ -80,66 +80,69 @@ export const Step2 = () => {
                     Insira seus dados de endereço para criar uma conta e
                     aproveitar nossos serviços.
                 </Title>
-                <TextInput
-                    name="postalCode"
-                    placeholder="CEP"
-                    control={control}
-                    error={errors.postalCode?.message}
-                    maskValueFormatted
-                    maskFormat="99999-999"
-                    keyboardType="numeric"
-                    loading={loadingCEP}
-                />
-                <SelectInput
-                    design="default"
-                    control={control}
-                    name="state"
-                    label="Estado"
-                    type="text"
-                    data={UFs}
-                    error={errors.state?.message}
-                    loading={false}
-                />
-                <TextInput
-                    name="city"
-                    placeholder="Cidade"
-                    control={control}
-                    error={errors.city?.message}
-                />
-                <TextInput
-                    name="neighborhood"
-                    placeholder="Bairro"
-                    control={control}
-                    error={errors.neighborhood?.message}
-                />
-                <TextInput
-                    name="street"
-                    placeholder="Rua"
-                    control={control}
-                    error={errors.street?.message}
-                />
-                <TextInput
-                    name="number"
-                    placeholder="Número"
-                    control={control}
-                    error={errors.number?.message}
-                    keyboardType="numeric"
-                />
+                <Form>
+                    <TextInput
+                        name="postalCode"
+                        placeholder="CEP"
+                        control={control}
+                        error={errors.postalCode?.message}
+                        maskValueFormatted
+                        maskFormat="99999-999"
+                        autoComplete="address-line1"
+                        keyboardType="numeric"
+                        loading={loadingCEP}
+                    />
+                    <SelectInput
+                        design="default"
+                        control={control}
+                        name="state"
+                        label="Estado"
+                        type="text"
+                        data={UFs}
+                        error={errors.state?.message}
+                        loading={false}
+                    />
+                    <TextInput
+                        name="city"
+                        placeholder="Cidade"
+                        control={control}
+                        error={errors.city?.message}
+                    />
+                    <TextInput
+                        name="neighborhood"
+                        placeholder="Bairro"
+                        control={control}
+                        error={errors.neighborhood?.message}
+                    />
+                    <TextInput
+                        name="street"
+                        placeholder="Rua"
+                        control={control}
+                        error={errors.street?.message}
+                    />
+                    <TextInput
+                        name="number"
+                        placeholder="Número"
+                        control={control}
+                        error={errors.number?.message}
+                        keyboardType="numeric"
+                    />
 
-                <TextInput
-                    name="complement"
-                    placeholder="Complemento"
-                    control={control}
-                    error={errors.complement?.message}
-                />
+                    <TextInput
+                        name="complement"
+                        placeholder="Complemento"
+                        control={control}
+                        error={errors.complement?.message}
+                    />
 
-                <Button
-                    type="default"
-                    onPress={() => {
-                        handleSubmit(onSubmit)();
-                    }}>
-                    Continuar
-                </Button>
+                    <Button
+                        type="default"
+                        onPress={() => {
+                            handleSubmit(onSubmit)();
+                        }}>
+                        Continuar
+                    </Button>
+                </Form>
             </Content>
         </Container>
     );

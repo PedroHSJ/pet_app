@@ -6,7 +6,7 @@ interface ButtonContainerProps {
     disabled?: boolean;
 }
 
-export const ButtonContainer = styled.TouchableHighlight<ButtonContainerProps>`
+export const ButtonContainer = styled.TouchableOpacity<ButtonContainerProps>`
     width: 100%;
     max-width: 353px;
     height: 45px;
@@ -25,7 +25,7 @@ export const ButtonText = styled.Text`
     letter-spacing: 1px;
 `;
 
-export const ButtonContainerDisabled = styled.TouchableHighlight<ButtonContainerProps>`
+export const ButtonContainerDisabled = styled.TouchableOpacity<ButtonContainerProps>`
     width: 100%;
     max-width: 353px;
     height: 45px;

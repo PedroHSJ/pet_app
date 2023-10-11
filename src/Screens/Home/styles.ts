@@ -13,7 +13,7 @@ export const Title = styled.Text`
 `;
 
 export const Subtitle = styled.Text`
-    color: ${({theme}) => theme.colors.black};
+    color: ${({theme}) => theme.colors.regular};
     font-size: ${({theme}) => theme.fonts.size.medium};
     font-family: ${({theme}) => theme.fonts.regular};
     text-align: center;

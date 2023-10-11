@@ -14,6 +14,7 @@ export default {
         lightBlack: '#666',
         regular: '#999',
         placeholder: '#B9B9B9',
+        softPlaceholder: '#AAA',
         background: '#A8DBD9',
         transparent: 'transparent',
         darkTransparent: 'rgba(0, 0, 0, 0.6)',
