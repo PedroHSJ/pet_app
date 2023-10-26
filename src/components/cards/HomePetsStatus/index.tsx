@@ -22,17 +22,17 @@ const HomePetStatus = () => {
                 <PetItem>
                     <PetImage source={Img} />
                     <ContainerStatus>
-                        <Status>Saldável</Status>
-                        <Status>Saldável</Status>
-                        <Status>Saldável</Status>
+                        <Status>Saudável</Status>
+                        <Status>Saudável</Status>
+                        <Status>Saudável</Status>
                     </ContainerStatus>
                 </PetItem>
                 <PetItem>
                     <PetImage source={Img} />
                     <ContainerStatus>
-                        <Status>Saldável</Status>
-                        <Status>Saldável</Status>
-                        <Status>Saldável</Status>
+                        <Status>Saudável</Status>
+                        <Status>Saudável</Status>
+                        <Status>Saudável</Status>
                     </ContainerStatus>
                 </PetItem>
                 <PetItem>
