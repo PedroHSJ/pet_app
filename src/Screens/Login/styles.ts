@@ -36,3 +36,10 @@ export const TextForgetPassword = styled.Text`
     font-family: ${({theme}) => theme.fonts.regular};
     text-align: right;
 `;
+
+export const Form = styled.View`
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+`;

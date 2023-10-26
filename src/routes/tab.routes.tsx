@@ -3,9 +3,10 @@ import {Dashboard} from '../Screens/Dashboard';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Profile} from '../Screens/Profile';
 import {useTheme} from 'styled-components/native';
+import Home from '../Screens/Home';
 
 export type TabRoutesParamList = {
-    Dashboard: undefined;
+    Home: undefined;
     Profile: undefined;
     Schedule: undefined;
 };
@@ -53,8 +54,8 @@ export const TabRoutes = (): JSX.Element => {
                 },
             }}>
             <Screen
-                name="Dashboard"
-                component={Dashboard}
+                name="Home"
+                component={Home}
                 options={{
                     tabBarIcon: ({size, color}) => (
                         <Icon name="home" size={25} color={color} />

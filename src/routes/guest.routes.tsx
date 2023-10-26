@@ -1,4 +1,4 @@
-import {Home} from '../Screens/Home';
+import {Welcome} from '../Screens/Welcome';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Login} from '../Screens/Login';
@@ -21,7 +21,7 @@ export interface IForgetPasswordStep2 {
 }
 
 export type GuestStackParamList = {
-    Home: undefined;
+    Welcome: undefined;
     Login: undefined;
     Step1: undefined;
     Step2: Partial<IClient>;
@@ -38,8 +38,8 @@ export const GuestRoutes = (): JSX.Element => {
         <NavigationContainer>
             <Navigator>
                 <Screen
-                    name="Home"
-                    component={Home}
+                    name="Welcome"
+                    component={Welcome}
                     options={{
                         headerShown: false,
                     }}

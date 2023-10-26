@@ -3,6 +3,7 @@ import {
     Container,
     ContainerFooter,
     TextForgetPassword,
+    Form,
 } from './styles';
 import ImageBack from '../../assets/images/Login_background_img.png';
 import Logo from '../../assets/images/Logo_primary.png';
@@ -15,7 +16,7 @@ import {ILogin} from '../../interfaces/ILogin';
 import {FormLoginValidationSchema} from '../../validations/FormLoginValidation.schema';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {useAuth} from '../../hooks/useAuth';
-import {TextFooter, TextFooterLink} from '../Home/styles';
+import {TextFooter, TextFooterLink} from '../Welcome/styles';
 import SelectInput from '../../components/form/SelectInput';
 import {Alert} from 'react-native';
 import {VerificationCodeInput} from '../../components/form/VerificationCodeInput';
@@ -56,21 +57,23 @@ export const Login = ({navigation}) => {
             <BackgroundImage source={ImageBack} />
             <Image source={Logo} alt="Logo da empresa" />
 
-            <TextInput
-                name="email"
-                placeholder="E-mail"
-                control={control}
-                error={errors.email?.message}>
-                <MCIcon name={'email'} size={24} color="#999" />
-            </TextInput>
-            <TextInput
-                name="password"
-                placeholder="Senha"
-                control={control}
-                error={errors.password?.message}
-                type="password">
-                <MCIcon name={'lock'} size={24} color="#999" />
-            </TextInput>
+            <Form>
+                <TextInput
+                    name="email"
+                    placeholder="E-mail"
+                    control={control}
+                    error={errors.email?.message}>
+                    <MCIcon name={'email'} size={24} color="#999" />
+                </TextInput>
+                <TextInput
+                    name="password"
+                    placeholder="Senha"
+                    control={control}
+                    error={errors.password?.message}
+                    type="password">
+                    <MCIcon name={'lock'} size={24} color="#999" />
+                </TextInput>
+            </Form>
             <ContainerFooter onPress={handleClickForgetPassword}>
                 <TextForgetPassword>Esqueceu sua senha?</TextForgetPassword>
             </ContainerFooter>
